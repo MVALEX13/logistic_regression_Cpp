@@ -14,5 +14,5 @@ Point::Point(float x1_input, float x2_input, bool y_input): x1(x1_input), x2(x2_
 Point::~Point()
 {
     // nothing to do
-    std::printf("the destructor of point has been called \n");
+    // std::printf("the destructor of point has been called \n");
 }
