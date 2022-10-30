@@ -7,8 +7,8 @@ path:= ./GenerateRandomDataset
 # here it(s useless because just one target)
 all: main
 
-main: main.o $(path)/Point.o $(path)/GenerateRandomDataset.o
-	g++ $(path)/Point.o $(path)/GenerateRandomDataset.o main.o  -o main
+main: main.o $(path)/Point.o $(path)/GenerateRandomDataset.o  
+	g++ $(path)/Point.o $(path)/GenerateRandomDataset.o main.o -o main 
 
 main.o: main.cpp
 	g++ -c main.cpp -o main.o
@@ -23,7 +23,8 @@ $(path)/GenerateRandomDataset.o: $(path)/GenerateRandomDataset.cpp
 clean:
 	rm -f *.o $(path)/*.o
 
- 
+# do 'pip show numpy' to get the path
+# -I/home/max/.local/lib/python3.10/site-packages/numpy/core/include -lpython3.10
 # g++ -c ./GenerateRandomDataset/GenerateRandomDataset.cpp -o ./GenerateRandomDataset/GenerateRandomDataset.o
 # g++ -c ./GenerateRandomDataset/Point.cpp -o ./GenerateRandomDataset/Point.o
 # g++ -c main.cpp -o main.o

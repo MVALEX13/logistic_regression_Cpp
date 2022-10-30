@@ -11,11 +11,11 @@
 class Dataset
 {
     
-        uint8_t nb_data;
+        uint16_t nb_data;
         Point* data_coordinates;
 
     public:
-        Dataset(uint8_t nb = 20);
+        Dataset(uint16_t nb = 20);
         ~Dataset();
 
         void WriteDataInFile();

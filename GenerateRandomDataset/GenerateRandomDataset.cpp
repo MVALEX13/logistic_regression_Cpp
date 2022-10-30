@@ -1,37 +1,39 @@
 #include "GenerateRandomDataset.h"
 #include <cmath>                                // for round() function
-#include <cstdlib>                              // for srand() function
-#include <time.h>                               // for time() function
 #include <fstream>
+#include <random>
+#include <stdint.h>
 
 
-Dataset::Dataset(uint8_t nb)
+Dataset::Dataset(uint16_t nb)
 {
     // allocation of the space for storing the datas
-    nb_data = nb;
+    this->nb_data = nb;
     data_coordinates = new Point[nb_data];
 
     // generation of random coordonates for the datas
-    uint8_t half_data = round(nb_data/2);
+    uint16_t half_data = round( (this->nb_data)/2 );
     std::printf("half_rand = %d \n",half_data);
-    srand(time(0));                                                 // change the random sequence of numbers
-    float x1center; float x2center;
 
     // points whose state is false
-    x1center = 2.1; x2center = 3.7;
+ 
+    std::default_random_engine generator;
+    std::normal_distribution<float> distributionX1(4.0,0.6);
+
     for (int i =0; i< half_data; i++)
-    {
-        data_coordinates[i].x1 = x1center + (rand()%10)/10.0;
-        data_coordinates[i].x2 = x2center + (rand()%10)/10.0;
+    {   
+        data_coordinates[i].x1 = distributionX1(generator) ;
+        data_coordinates[i].x2 = distributionX1(generator) ;
         data_coordinates[i].y = false;
     }
 
+    std::normal_distribution<double> distributionX2(7.0,0.8);
+
     // points whose state is true
-    x1center = 4.1; x2center = 4.8;
-    for (int i = half_data; i< nb_data; i++)
+    for (int i = half_data; i< this->nb_data; i++)
     {
-        data_coordinates[i].x1 = x1center + (rand()%10)/10.0;
-        data_coordinates[i].x2 = x2center + (rand()%10)/10.0;
+        data_coordinates[i].x1 = distributionX2(generator);
+        data_coordinates[i].x2 = distributionX2(generator);
         data_coordinates[i].y = true;
     }
 }
