@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include "Point.h"
 #include <iostream>                         // for iostream object
+#include <string>
 
 class Dataset
 {
@@ -17,10 +18,12 @@ class Dataset
         Dataset(uint8_t nb = 20);
         ~Dataset();
 
+        void WriteDataInFile();
+
         // std::ostream& flux                 correspond au flux usuellement utilisé lorsque l'on fait cout <<
         // std::ostream& operator<<           correspond au nouveau flux capable d'afficher une variable de type Dataset
         friend std::ostream& operator<< (std::ostream& flux, Dataset const& d);
-  
+
 };
 
 #endif

@@ -2,6 +2,7 @@
 #include <cmath>                                // for round() function
 #include <cstdlib>                              // for srand() function
 #include <time.h>                               // for time() function
+#include <fstream>
 
 
 Dataset::Dataset(uint8_t nb)
@@ -33,6 +34,21 @@ Dataset::Dataset(uint8_t nb)
         data_coordinates[i].x2 = x2center + (rand()%10)/10.0;
         data_coordinates[i].y = true;
     }
+}
+
+void Dataset::WriteDataInFile()
+{
+    std::fstream f;
+    f.open("Dataset.dat",std::ios::out);
+    f << " # x1" << "\t" << "x2" << "\t" << "y" << std::endl;
+    
+    for (int i = 0; i<nb_data ; i ++)
+    {
+        f << this->data_coordinates[i].x1 << "\t"
+          << this->data_coordinates[i].x2 << "\t"
+          << this->data_coordinates[i].y  << std::endl;
+    }
+    f.close();
 }
 
 std::ostream& operator<< (std::ostream& flux, Dataset const& d)
