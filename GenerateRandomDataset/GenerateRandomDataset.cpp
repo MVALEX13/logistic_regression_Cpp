@@ -6,10 +6,10 @@
 #define DEFAULT_DATASET_SIZE 20
 
 
-Dataset::Dataset()
+Dataset::Dataset(uint8_t nb)
 {
     // allocation of the space for storing the datas
-    nb_data = DEFAULT_DATASET_SIZE;
+    nb_data = nb;
     data_coordinates = new Point [nb_data];
 
     // generation of random coordonates for the datas
@@ -36,12 +36,18 @@ Dataset::Dataset()
     }
 }
 
-Dataset::Dataset(uint8_t nb)
+std::ostream& operator<< (std::ostream& flux, Dataset const& d)
 {
-    
+    for (int i = 0; i< (d.nb_data); i++)
+    {
+        flux << "point["<<i<<"] = ("<< d.data_coordinates[i].x1 << "," << d.data_coordinates[i].x2 <<") \n";
+    }
+    return flux;
 }
+
 
 Dataset::~Dataset()
 {
     delete[] data_coordinates;
+    std::printf("\nThe Dataset destructor is called \n");
 }

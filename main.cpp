@@ -1,12 +1,17 @@
 // #include <iostream>
-#include <stdio.h>
+#include <stdio.h>                                           
 #include "GenerateRandomDataset/Point.h"
+#include "GenerateRandomDataset/GenerateRandomDataset.h"
 
 int main(int argc, char *argv[])
 {
-    Point A(1.0,1.0);
-
+    // Point class test
+    Point A;
     printf("x = %f \ny = %f \n",A.x1,A.x2);
+
+    // Dataset class test
+    Dataset dataset_1;
+    std::cout << dataset_1;
 
     return 0;
 }
