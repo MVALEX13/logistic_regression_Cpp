@@ -10,7 +10,7 @@
 
 class Dataset
 {
-    
+    public:
         uint16_t nb_data;
         Point* data_coordinates;
 
@@ -19,6 +19,8 @@ class Dataset
         ~Dataset();
 
         void WriteDataInFile();
+        Point& GetPoint(uint16_t point_index) const;
+        uint16_t GetDatasetSize() const;
 
         // std::ostream& flux                 correspond au flux usuellement utilisé lorsque l'on fait cout <<
         // std::ostream& operator<<           correspond au nouveau flux capable d'afficher une variable de type Dataset

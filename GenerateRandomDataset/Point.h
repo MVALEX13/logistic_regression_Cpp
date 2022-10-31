@@ -5,15 +5,27 @@
 
 class Point
 {
-    public:
-        float x1;
-        float x2;
-        bool y;
+    private:
+        float x1, x2, y;
 
     public:
+        // constructors and destructors
         Point();
-        Point(float x1_input, float x2_input, bool y_input);
+        Point(float x1_input, float x2_input, float y_input);
         ~Point();
+
+        // operator overload
+        Point& operator=(const Point& p);
+
+        // tools
+        void SetX1( float x1_input);
+        void SetX2( float x2_input);
+        void SetY( float y_input );
+
+        float GetX1() const;                               
+        float GetX2() const;
+        float GetY() const;
+        
 };
 
 #endif
