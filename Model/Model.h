@@ -35,6 +35,9 @@ class Model1
 
     // tools
     Point& GetPoint( uint16_t point_index ) const;
+
+    // unused method 
+    void CreateGNUplotScript() const;
     
 };
 #endif

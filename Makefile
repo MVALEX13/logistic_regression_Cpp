@@ -8,7 +8,7 @@ path:= ./GenerateRandomDataset
 all: main
 
 main: main.o $(path)/Point.o $(path)/GenerateRandomDataset.o Model/Model.o 
-	g++ $(path)/Point.o $(path)/GenerateRandomDataset.o main.o -o main 
+	g++ $(path)/Point.o $(path)/GenerateRandomDataset.o Model/Model.o main.o -o main 
 
 main.o: main.cpp
 	g++ -c main.cpp -o main.o

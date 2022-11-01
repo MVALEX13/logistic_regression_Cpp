@@ -3,6 +3,9 @@
 #include "GenerateRandomDataset/Point.h"
 #include "GenerateRandomDataset/GenerateRandomDataset.h"
 #include <stdint.h>                                               // for uintX_t type
+#include "Model/Model.h"
+
+#include <fstream>
 
 /* #include <vector>
 #include "matplotlib-cpp-master/matplotlibcpp.h" */
@@ -21,7 +24,13 @@ int main(int argc, char *argv[])
  
     // test writing in .dat file
     dataset_ptr->WriteDataInFile();
-    system("gnuplot graph.p -persist");
+    
+    // test Model1
+    Model1 M;
+    // M.CreateGNUplotScript();
 
+    // plot dataset
+    // system("gnuplot graph.p -persist");
+    
     return 0;
 }

@@ -2,6 +2,7 @@
 #include <ctime>            // for time function
 #include <cstdlib>          // for rand function
 #include <cmath>
+#include <fstream>
 
 Model1::Model1() 
 {
@@ -55,6 +56,32 @@ void Model1::ComputeDecisions()
 Point& Model1::GetPoint( uint16_t point_index) const
 {
     return this->decisions[point_index];
+}
+
+void Model1::CreateGNUplotScript() const
+{
+    std::fstream f;
+    f.open("graph.p",std::ios::out);
+    if (!f)
+        std::cout << "no GNUplot file created " << std::endl;
+    
+    f<< "set title 'data'"                                 << std::endl
+     << "set xlabel 'x1'"                                  << std::endl
+     << "set ylabel 'x2'"                                  << std::endl
+     << "set xrange [2.0:10.0]"                            << std::endl
+     << "set yrange [2.0:10.0]"                            << std::endl
+     << "set grid"                                         << std::endl
+     << "set palette rgb 33,13,10"                         << std::endl
+     << "plot 'Dataset.dat' using 1:2:3 ls 7 ps 2 palette" << std::endl
+     << "set contour base"                                 << std::endl
+     << "set cntrparam level incremental -3, 0.5, 3"       << std::endl
+     << "set cntrparam levels 15"                          << std::endl
+     << "f(x,y) = x+y"                                     << std::endl
+     << "set isosample 250, 250"                           << std::endl
+     << "replot f(x,y)"                                    << std::endl
+     << "set contour base"                                 << std::endl;
+     
+     f.close();    
 }
 
 Model1::~Model1()
