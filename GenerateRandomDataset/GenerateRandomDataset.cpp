@@ -13,12 +13,11 @@ Dataset::Dataset(uint16_t nb)
 
     // generation of random coordonates for the datas
     uint16_t half_data = round( (this->nb_data)/2 );
-    std::printf("half_rand = %d \n",half_data);
 
     // points whose state is false
  
     std::default_random_engine generator;
-    std::normal_distribution<float> distributionX1(4.0,0.6);
+    std::normal_distribution<float> distributionX1(1.0,1.8);
 
     for (int i =0; i< half_data; i++)
     {   
@@ -27,7 +26,7 @@ Dataset::Dataset(uint16_t nb)
         data_coordinates[i].SetY( 0.0 ) ;
     }
 
-    std::normal_distribution<double> distributionX2(7.0,0.8);
+    std::normal_distribution<double> distributionX2(8.0,2.2);
 
     // points whose state is true
     for (int i = half_data; i< this->nb_data; i++)
@@ -70,7 +69,7 @@ std::ostream& operator<< (std::ostream& flux, Dataset const& d)
         flux << "point["<<i<<"] = ("
              << d.data_coordinates[i].GetX1() << "," 
              << d.data_coordinates[i].GetX2() <<") y = "
-             <<d.data_coordinates[i].GetY() << " \n";
+             << d.data_coordinates[i].GetY() << " \n";
     }
     return flux;
 }
