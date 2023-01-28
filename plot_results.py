@@ -7,7 +7,7 @@ import matplotlib.animation as animation
 
 ## ---  HARVEST DATA FROM THE TXT FILE --- ##
 #including the function obtained from c++ code
-from DecisionFunction import func
+# from DecisionFunction import func
 
 f = open('./Dataset.dat','r')
 
