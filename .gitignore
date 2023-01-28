@@ -2,5 +2,7 @@
 *.o
 matplotlib-cpp-master/
 ./main
-__pycache__/
+
+**/__pycache__/
+
 archives/
